@@ -1,1 +1,2 @@
-<%= react_component("HeaderUser", prerender: false)%>
+  <%= react_component "HeaderUser", props: {url_log_in: user_session_path, url_sign_up: new_user_session_path},
+    prerender: false %>

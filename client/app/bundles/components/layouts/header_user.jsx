@@ -1,6 +1,17 @@
 import React from 'react';
+import axios from 'axios';
+import UserLogIn from './user_log_in';
 
 export default class HeaderUser extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      url_log_in: props.url_log_in,
+      url_sign_up: props.url_sign_up
+    };
+  }
+
   render(){
     return (
     <div>
@@ -8,57 +19,21 @@ export default class HeaderUser extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-6 col-md-4 main-logo">
-              <a href="index.html"><img src="../assets/logo.png" alt="logo" className="logo img-responsive" /></a>
+              <a href="index.html"><img src="../../assets/logo.png" alt="logo" className="logo img-responsive" /></a>
             </div>
             <div className="col-md-8">
               <div className="pushright">
                 <div className="top">
-                  <a href="#" id="reg" className="btn btn-default btn-dark">Login<span>-- Or --</span>Register</a>
-                  <div className="regwrap">
-                    <div className="row">
-                      <div className="col-md-6 regform">
-                        <div className="title-widget-bg">
-                          <div className="title-widget">{I18n.t('login')}</div>
-                        </div>
-                        <form role="form">
-                          <div className="form-group">
-                            <input type="text" className="form-control" id="username" placeholder="Username" />
-                          </div>
-                          <div className="form-group">
-                            <input type="password" className="form-control" id="password" placeholder="password" />
-                          </div>
-                          <div className="form-group">
-                            <button className="btn btn-default btn-red btn-sm">Sign In</button>
-                          </div>
-                        </form>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="title-widget-bg">
-                          <div className="title-widget">Register</div>
-                        </div>
-                        <p>
-                          New User? By creating an account you be able to shop faster, be up to date on an order
-                        </p>
-                        <button className="btn btn-default btn-yellow">Register Now</button>
-                      </div>
-                    </div>
+                  <div className="srch-wrap">
+                    <a onClick={this.handleEn.bind(this, "/vi")} id="srch" className="btn btn-default btn-search">
+                      <img src="/assets/vi.png" alt="Vi" /></a>
                   </div>
                   <div className="srch-wrap">
-                    <a href="#" id="srch" className="btn btn-default btn-search"><i className="fa fa-search"></i></a>
-                  </div>
-                  <div className="srchwrap">
-                    <div className="row">
-                      <div className="col-md-12">
-                        <form className="form-horizontal" role="form">
-                          <div className="form-group">
-                            <div className="col-sm-10">
-                              <input type="text" className="form-control" id="search" />
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                    <a onClick={this.handleEn.bind(this, "/en")} id="srch" className="btn btn-default btn-search">
+                      <img src="/assets/en.png" alt="En" /></a>
+                  </div> &nbsp;&nbsp;
+                  <a href={this.state.url_log_in} className="btn btn-default btn-dark">{I18n.t('login')}</a>&nbsp;&nbsp;
+                  <a href={this.state.url_sign_up} className="btn btn-default btn-dark">{I18n.t('signup')}</a>
                 </div>
               </div>
             </div>
@@ -81,14 +56,14 @@ export default class HeaderUser extends React.Component {
                 </div>
                 <div className="navbar-collapse collapse">
                   <ul className="nav navbar-nav">
-                    <li><a href="index.html" className="active">Home</a><div className="curve"></div></li>
+                    <li><a href="/" className="active">Home</a><div className="curve"></div></li>
                     <li className="dropdown menu-large">
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Mega Menu</a>
                       <ul className="dropdown-menu megamenu container row">
                         <li className="col-sm-4">
                           <h4>Page Template</h4>
                           <ul>
-                            <li><a href="index.html">Home Page</a></li>
+                            <li><a href="/">Home Page</a></li>
                             <li><a href="category.html">Category Page</a></li>
                             <li><a href="category-list.html">Category List Page</a></li>
                             <li><a href="category-fullwidth.html">Category fullwidth</a></li>
@@ -167,7 +142,7 @@ export default class HeaderUser extends React.Component {
                     <tbody>
                       <tr>
                         <td>
-                        <a href="product.html"><img src="../assets/dummy-1.png" alt="" className="img-responsive"/></a>
+                        <a href="product.html"><img src="../../assets/dummy-1.png" alt="" className="img-responsive"/></a>
                         </td>
                         <td><a href="product.html">Casio Exilim Zoom</a><br/><span>Color: green</span></td>
                         <td>1X</td>
@@ -176,7 +151,7 @@ export default class HeaderUser extends React.Component {
                       </tr>
                       <tr>
                         <td>
-                        <a href="product.html"><img src="../assets/dummy-1.png" alt="" className="img-responsive"/></a>
+                        <a href="product.html"><img src="../../assets/dummy-1.png" alt="" className="img-responsive"/></a>
                         </td>
                         <td><a href="product.html">Casio Exilim Zoom</a><br/><span>Color: green</span></td>
                         <td>1X</td>
@@ -185,7 +160,7 @@ export default class HeaderUser extends React.Component {
                       </tr>
                       <tr>
                         <td>
-                        <a href="product.html"><img src="../assets/dummy-1.png" alt="" className="img-responsive"/></a>
+                        <a href="product.html"><img src="../../assets/dummy-1.png" alt="" className="img-responsive"/></a>
                         </td>
                         <td><a href="product.html">Casio Exilim Zoom</a><br/><span>Color: green</span></td>
                         <td>1X</td>
@@ -214,6 +189,10 @@ export default class HeaderUser extends React.Component {
         </div>
       </div>
     </div>
-      );
+    );
+  }
+
+  handleEn(link, event) {
+    window.location.href = link;
   }
 }

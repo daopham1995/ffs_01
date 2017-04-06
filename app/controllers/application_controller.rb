@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
+    binding.pry
     redirect_to root_path, alert: exception.message
   end
 

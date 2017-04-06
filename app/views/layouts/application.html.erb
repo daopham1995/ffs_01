@@ -2,27 +2,48 @@
 <html>
   <head>
     <title><%= full_title yield :title %></title>
+    <meta name="turbolinks-cache-control" content="no-cache">
     <%= render "layouts/rails_default" %>
     <%= render "layouts/shim" %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/bootstrap.min.js" data-turbolinks-track="reload"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp" data-turbolinks-track="reload"></script>
+    <script type="text/javascript" src="/assets/jquery.ui.map.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/owl.carousel.min.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/shop.js" data-turbolinks-track="reload"></script>
   </head>
-  <body id="users">
+  <body>
     <div class="wrapper">
-        <%= render "layouts/header_user" %>
-      <div class="user">
-        <% unless flash.empty? %>
-          <script type="text/javascript">
-            <% flash.each do |f| %>
-              <% type = f[0].to_s.gsub("alert", "error").gsub("notice", "info") %>
-              toastr['<%= type %>']('<%= f[1] %>');
-            <% end %>
-          </script>
-        <% end %>
-        <div class="container">
-          <%= render "/layouts/slide" %>
-          <%= yield %>
-          <%= render "/layouts/footer" %>
+      <%= render "layouts/header_user" %>
+      <%= render "layouts/slide_main" %>
+      <%= react_component "Slide", prerender: false %>
+      <div id="users">
+        <div class="user">
+          <% unless flash.empty? %>
+            <script type="text/javascript">
+              <% flash.each do |f| %>
+                <% type = f[0].to_s.gsub("alert", "error").gsub("notice", "info") %>
+                toastr['<%= type %>']('<%= f[1] %>');
+              <% end %>
+            </script>
+          <% end %>
+          <div class="container">
+            <%= yield %>
+          </div>
         </div>
       </div>
+      <%= render "/layouts/footer" %>
+      <%= react_component "ProductHome"%>
+      <%= render "/layouts/footer_user"%>
     </div>
   </body>
 </html>

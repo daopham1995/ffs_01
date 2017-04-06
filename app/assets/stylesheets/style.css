@@ -324,14 +324,14 @@ html,body {
 	font-size:16px;
 }
 .big-deal{
-	background:#ffffff;
+	background:#8c1804;
 	width:110px;
 	height:110px;
 }
 .big-deal .inner{
-	background:#ffffff;
-	color:#39b3ca;
-	border-color:#c4cbd1;
+	background: rgba(6, 12, 0, 0.95);
+  color: rgba(18, 220, 62, 0.96);
+  border-color: #8a6d3b;
 }
 .big-deal span{
 	font-size:32px;
@@ -339,24 +339,24 @@ html,body {
 	margin:0;
 }
 .big-deal .oldprice{
-	color: #c4cbd1;
-	display: block;
-    font-size: 13px;
-    height: 20px;
-    margin-bottom: 5px;
-    margin-top: -25px;
-    text-align: center;
-    text-decoration: line-through;
-	font-weight:400;
+  color: #ff0000;
+  display: block;
+  font-size: 13px;
+  height: 20px;
+  margin-bottom: 5px;
+  margin-top: -25px;
+  text-align: center;
+  text-decoration: line-through;
+  font-weight: 400;
 }
 .big-deal .ondeal{
-	color: #d84a3f;
+	color: white;
 	font-size: 12px;
 	display: block;
-    text-align: center;
+	text-align: center;
 	height: 20px;
-    margin-bottom: 5px;
-    margin-top: -45px;
+	margin-bottom: 5px;
+	margin-top: -45px;
 	font-weight:400;
 }
 /**---------------home carousel------------------------------------------**/
@@ -473,11 +473,11 @@ html,body {
 .pricetag {
 	display:block;
 	background:#d2d9df;
-	width:78px;
-	height:78px;
-    right: 1%;
-    top: 83%;
-    position: absolute;
+	width: 68px;
+  height: 68px;
+  right: -10%;
+  top: -11%;
+  position: absolute;
 	border-radius:100%;
 	padding:5px;
 }
@@ -1047,6 +1047,7 @@ html,body {
 	background:url(iconmobile.png) no-repeat 0 center transparent;
 }
 .footer{
+	background: url(header-bg.png);
 	min-height:137px;
 }
 .footermenu {
@@ -2107,3 +2108,9 @@ html,body {
 
 }
 
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  width: 100% !important;
+}
